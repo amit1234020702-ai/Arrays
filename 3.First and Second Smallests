@@ -1,0 +1,33 @@
+Input: arr[] = [2, 4, 3, 5, 6]
+Output: [2, 3] 
+
+T:o(n)
+S:O(1)
+
+class Solution {
+    public ArrayList<Integer> minAnd2ndMin(int[] arr) {
+
+        int smallest = Integer.MAX_VALUE;
+        int secondSmallest = Integer.MAX_VALUE;
+
+        for (int num : arr) {
+
+            if (num < smallest) {
+                secondSmallest = smallest;
+                smallest = num;
+            }
+            else if (num < secondSmallest && num != smallest) {
+                secondSmallest = num;
+            }
+        }
+
+        ArrayList<Integer> ans = new ArrayList<>();
+        if (secondSmallest == Integer.MAX_VALUE) {
+            ans.add(-1);
+        } else {
+            ans.add(smallest);
+            ans.add(secondSmallest);
+        }
+        return ans;
+    }
+}
