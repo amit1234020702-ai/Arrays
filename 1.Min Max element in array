@@ -1,6 +1,7 @@
 //Minmum
 
 Input: [5, 2, 8, 1, 9]
+
 Output: 1
 T:o(n)
 S:o(1) 
