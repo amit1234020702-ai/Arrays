@@ -32,3 +32,31 @@ for(int num:newArray){
       
     }
 }
+///////////////////////////////
+import java.util.*;
+class Solution {
+    public void insertAtIndex(ArrayList<Integer> arr, int index, int val) {
+        arr.add(index, val);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        ArrayList<Integer> arr = new ArrayList<>();
+
+        arr.add(10);
+        arr.add(20);
+        arr.add(30);
+        arr.add(40);
+
+        int index = 2;
+        int val = 50;
+
+        Solution obj = new Solution();
+
+        obj.insertAtIndex(arr, index, val);
+
+        System.out.println(arr);
+    }
+}
