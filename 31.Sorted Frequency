@@ -1,0 +1,101 @@
+//Input: arr[] = [3, 3, 2, 2, 1, 4]
+Output:
+1 1
+2 2
+3 2
+4 1
+T: O(n log n) 
+S: O(1)
+
+class Solution {
+    public static void freqSorted(int arr[]) {
+        Arrays.sort(arr);
+        int n=arr.length;
+        for(int i=0;i<n;i++){
+            int count=1;
+            while(i+1<n && arr[i]==arr[i+1]){
+                count++;
+                i++;
+            
+        }
+        
+        System.out.println(arr[i] +" "+count);
+        }
+        
+    }
+}
+//////////////////////////
+//second
+Time: O(n)
+Space: O(1)
+
+public class Main {
+    public static void main(String[] args) {
+
+        int[] arr = {1, 1, 2, 2, 2, 3, 4, 4};
+
+        int n = arr.length;
+        int i = 0;
+
+        while (i < n) {
+
+            int count = 1;
+
+            while (i + 1 < n && arr[i] == arr[i + 1]) {
+                count++;
+                i++;
+            }
+
+            System.out.println(arr[i] + " -> " + count);
+
+            i++;
+        }
+    }
+}
+/////////////////////////////
+third
+Time: O(n) 
+Space: O(k)
+import java.util.HashMap;
+
+public class Main {
+    public static void main(String[] args) {
+
+        int[] arr = {1, 1, 2, 2, 2, 3, 4, 4};
+
+        HashMap<Integer, Integer> map = new HashMap<>();
+
+        for (int x : arr) {
+            map.put(x, map.getOrDefault(x, 0) + 1);
+        }
+
+        for (int key : map.keySet()) {
+            System.out.println(key + " -> " + map.get(key));
+        }
+    }
+}
+/////////////
+tow pointer
+Time: O(n)
+Space: O(1)
+public class Main {
+    public static void main(String[] args) {
+
+        int[] arr = {1, 1, 2, 2, 2, 3, 4, 4};
+
+        int i = 0;
+
+        while (i < arr.length) {
+
+            int j = i;
+
+            while (j < arr.length && arr[i] == arr[j]) {
+                j++;
+            }
+
+            System.out.println(arr[i] + " -> " + (j - i));
+
+            i = j;
+        }
+    }
+}
