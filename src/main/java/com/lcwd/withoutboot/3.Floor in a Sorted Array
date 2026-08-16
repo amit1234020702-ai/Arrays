@@ -1,0 +1,27 @@
+Input: arr[] = [1, 2, 8, 10, 10, 12, 19], x = 5
+Output: 1
+
+Input: arr[] = [1, 2, 8, 10, 10, 12, 19], x = 11
+Output: 4
+
+yt link=https://www.youtube.com/watch?v=3Up7GyRYag8
+
+
+class Solution {
+    static int findFloor(int[] arr, int x) {
+        int top=0;
+        int bottom=arr.length-1;
+        int ans=-1;
+        while(top<=bottom){
+            int mid=top+(bottom-top)/2;
+            if(arr[mid]<=x){
+                ans=mid;
+                top=mid+1;
+            }else{
+                bottom=mid-1;
+            }
+        }
+        return ans;
+        
+    }
+}
