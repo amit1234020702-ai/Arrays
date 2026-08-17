@@ -1,0 +1,48 @@
+
+Time: O(n log n) 
+Space: O(1) 
+Given an array arr[] of n integers and an integer k, find the count of elements that appear more than n/k times in the array.
+Input: arr[] = [3, 1, 2, 2, 1, 2, 3, 3], k = 4
+Output: 2
+
+Input: arr = [2, 3, 3, 2], k = 3
+Output: 2
+class Solution {
+    public int countOccurence(int[] arr, int k) {
+        // int n=arr.length;
+        // int limit=n/k;
+        // int count=0;
+        // HashMap<Integer,Integer> map=new HashMap<>();
+        // for(int num:arr){
+        //     map.put(num,map.getOrDefault(num,0)+1);
+        // }
+        // for(int freq:map.values()){
+        //     if(freq>limit){
+        //         count++;
+        //     }
+        // }
+        // return count;
+        
+        ///sorting method
+           int n=arr.length;
+        int limit=n/k;
+        int count=0;
+        Arrays.sort(arr);
+        int freq=1;
+        for(int i=1;i<n;i++){
+            if(arr[i]==arr[i-1]){
+                freq++;
+            }
+            else{
+                if(freq>limit){
+                    count++;
+                }
+                freq=1;
+            }
+        }
+        if(freq>limit){
+            count++;
+        }
+        return count;
+    }
+}
