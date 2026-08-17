@@ -1,0 +1,33 @@
+Time: O(log n)
+Space: O(1)
+
+
+Problem	When arr[mid] == k
+First Occurrence	high = mid - 1   //use to find first 
+Last Occurrence	low = mid + 1// use to last
+
+
+class Solution {
+    public int lastOccurrence(int[] arr, int k) {
+        int low = 0;
+        int high = arr.length - 1;
+        int ans = -1;
+
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+
+            if (arr[mid] == k) {
+                ans = mid;
+                low = mid + 1;   // search right side
+            }
+            else if (arr[mid] < k) {
+                low = mid + 1;
+            }
+            else {
+                high = mid - 1;
+            }
+        }
+
+        return ans;
+    }
+}
