@@ -1,0 +1,27 @@
+Input: arr[] = [1, 1, 1, 1, 1, 0, 0, 0]
+Output: 5
+
+Input: arr[] = [1, 1, 1, 1, 1, 1, 1]
+Output: 7
+
+
+
+class Solution {
+    public int countOnes(int[] arr) {
+        int low=0;
+        int high=arr.length-1;
+        int ans=-1;
+        while(low<=high){
+            int mid=low+(high-low)/2;
+            if(arr[mid]==1){
+                ans=mid;
+                low=mid+1;
+            }else{
+                high=mid-1;
+            }
+        }
+        return ans+1;
+        
+        
+    }
+}
