@@ -1,0 +1,53 @@
+Input: x = 4
+Output: 2
+
+Input: x = 11
+Output: 3
+
+class Solution {
+    public static int floorSqrt(int n) {
+        // code here
+        int ans=0;
+        for(int i=1;i*i<=n;i++){ 
+            ans=i;
+            
+        }
+        return ans;
+        
+    }
+}
+
+
+///////////////////////////////////////////////////////////
+/////binary search method
+
+class Solution {
+    static int floorSqrt(int x) {
+
+        if (x == 0 || x == 1) {
+            return x;
+        }
+
+        long low = 1;
+        long high = x / 2;
+        long ans = 0;
+
+        while (low <= high) {
+
+            long mid = low + (high - low) / 2;
+
+            if (mid * mid == x) {
+                return (int) mid;
+            }
+
+            if (mid * mid < x) {
+                ans = mid;
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+
+        return (int) ans;
+    }
+}
