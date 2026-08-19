@@ -1,0 +1,109 @@
+class Solution {
+    public static void merge(int[] arr1, int[] arr2) {
+
+        int n = arr1.length;
+        int m = arr2.length;
+
+        int gap = (n + m + 1) / 2;
+
+        while (gap > 0) {
+
+            int i = 0;
+            int j = gap;
+
+            while (j < n + m) {
+
+                // Both elements are in arr1
+                if (i < n && j < n) {
+
+                    if (arr1[i] > arr1[j]) {
+                        int temp = arr1[i];
+                        arr1[i] = arr1[j];
+                        arr1[j] = temp;
+                    }
+                }
+
+                // One element in arr1, one in arr2
+                else if (i < n && j >= n) {
+
+                    if (arr1[i] > arr2[j - n]) {
+                        int temp = arr1[i];
+                        arr1[i] = arr2[j - n];
+                        arr2[j - n] = temp;
+                    }
+                }
+
+                // Both elements are in arr2
+                else {
+
+                    if (arr2[i - n] > arr2[j - n]) {
+                        int temp = arr2[i - n];
+                        arr2[i - n] = arr2[j - n];
+                        arr2[j - n] = temp;
+                    }
+                }
+
+                i++;
+                j++;
+            }
+
+            if (gap == 1)
+                gap = 0;
+            else
+                gap = (gap + 1) / 2;
+        }
+    }
+}
+s:o(n+m)
+t:o(1)
+////////////////////////////////////////////////////
+public class MergeArrays {
+
+    static void merge(int[] arr1, int[] arr2, int[] arr3) {
+
+        int i = 0;
+        int j = 0;
+        int k = 0;
+
+        while (i < arr1.length && j < arr2.length) {
+
+            if (arr1[i] <= arr2[j]) {
+                arr3[k] = arr1[i];
+                i++;
+            } else {
+                arr3[k] = arr2[j];
+                j++;
+            }
+
+            k++;
+        }
+
+        while (i < arr1.length) {
+            arr3[k] = arr1[i];
+            i++;
+            k++;
+        }
+
+        while (j < arr2.length) {
+            arr3[k] = arr2[j];
+            j++;
+            k++;
+        }
+    }
+
+    public static void main(String[] args) {
+
+        int[] arr1 = {1, 3, 5, 7};
+        int[] arr2 = {2, 4, 6, 8};
+
+        int[] arr3 = new int[arr1.length + arr2.length];
+
+        merge(arr1, arr2, arr3);
+
+        for (int x : arr3) {
+            System.out.print(x + " ");
+        }
+    }
+}
+s:o(n+m)
+t:o(n+m)
