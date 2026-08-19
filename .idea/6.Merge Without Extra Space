@@ -1,0 +1,85 @@
+Input: a[] = [2, 4, 7, 10], b[] = [2, 3]
+Output: a[] = [2, 2, 3, 4], b[] = [7, 10]
+
+import java.util.Arrays;
+
+class Solution {
+    public void mergeArrays(int a[], int b[]) {
+
+        int i = 0;
+        int j = 0;
+        int k = a.length - 1;
+
+        while (i <= k && j < b.length) {
+
+            if (a[i] <= b[j]) {
+                i++;
+            } else {
+                int temp = a[k];
+                a[k] = b[j];
+                b[j] = temp;
+
+                k--;
+                j++;
+            }
+        }
+
+        Arrays.sort(a);
+        Arrays.sort(b);
+    }
+}
+//////////////////////////////////////////
+////////////////////////////////////
+////////////////////
+
+class Solution {
+    public void mergeArrays(int a[], int b[]) {
+        int n = a.length;
+        int m = b.length;
+
+        int gap = (n + m + 1) / 2;
+
+        while (gap > 0) {
+            int i = 0;
+            int j = gap;
+
+            while (j < n + m) {
+
+                // Both elements are in a[]
+                if (i < n && j < n) {
+                    if (a[i] > a[j]) {
+                        int temp = a[i];
+                        a[i] = a[j];
+                        a[j] = temp;
+                    }
+                }
+
+                // i in a[], j in b[]
+                else if (i < n && j >= n) {
+                    if (a[i] > b[j - n]) {
+                        int temp = a[i];
+                        a[i] = b[j - n];
+                        b[j - n] = temp;
+                    }
+                }
+
+                // Both elements are in b[]
+                else {
+                    if (b[i - n] > b[j - n]) {
+                        int temp = b[i - n];
+                        b[i - n] = b[j - n];
+                        b[j - n] = temp;
+                    }
+                }
+
+                i++;
+                j++;
+            }
+
+            if (gap == 1)
+                gap = 0;
+            else
+                gap = (gap + 1) / 2;
+        }
+    }
+}
