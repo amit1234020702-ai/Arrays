@@ -1,10 +1,10 @@
 //Minmum
 
 Input: [5, 2, 8, 1, 9]
-
 Output: 1
 T:o(n)
 S:o(1) 
+
 class Solution {
     public int findMin(int[] arr) {
         int min = arr[0];
