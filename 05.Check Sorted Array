@@ -19,7 +19,7 @@ class Solution {
 /////////////////////////////////////
 S:O(n)
 T:O(1)
-
+ 
 class Solution {
     public boolean isSorted(int[] arr) {
         for (int i = 1; i < arr.length; i++) {
