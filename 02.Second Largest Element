@@ -4,6 +4,30 @@ Output: 34
 T:(n)
 S:(1)
 
+
+class Solution {
+    public int getSecondLargest(int[] arr) {
+        int n=arr.length;
+        // int largest=Integer.MIN_VALUE;
+        // int second=Integer.MIN_VALUE;
+        int largest=arr[0];
+        int second=-1;
+        for(int i=1;i<n;i++){
+            if(arr[i]>largest){
+                second=largest;
+                largest=arr[i];
+            
+        }
+        else if(arr[i]<largest && arr[i]>second){
+            second=arr[i];
+        }
+        }
+        return second;
+        
+    }
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////
 class Solution {
     public int getSecondLargest(int[] arr) {
 
