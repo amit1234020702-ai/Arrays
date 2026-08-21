@@ -16,6 +16,7 @@ int newArray[]=new int [arr.length+1];
 if(indexpos<0 || indexpos>arr.length){
     System.out.println("Invalid index");
     return;
+
 }
 for(int i=0;i<indexpos;i++){
     newArray[i]=arr[1];
